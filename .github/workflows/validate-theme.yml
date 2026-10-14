@@ -18,3 +18,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check XML is well-formed
         run: python -c "import xml.etree.ElementTree as ET; ET.parse('theme/mrk-blogger-theme.xml'); print('Theme XML is well-formed')"
+      - name: Upload theme file for manual Blogger installation
+        uses: actions/upload-artifact@v4
+        with:
+          name: mrk-blogger-theme
+          path: theme/mrk-blogger-theme.xml
+          if-no-files-found: error
+          retention-days: 30
