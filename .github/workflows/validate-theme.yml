@@ -55,7 +55,8 @@ jobs:
           
           Commit: `$COMMIT_SHA`"
           else
-            gh issue create               --title "[Theme validation failed] Automated check needs attention"               --label "bug"               --body "The MRK Blogger theme static validation workflow failed.
+            gh issue create \
+              --title "[Theme validation failed] Automated check needs attention"               --label "bug"               --body "The MRK Blogger theme static validation workflow failed.
 
           - Run: $RUN_URL
           - Commit: `$COMMIT_SHA`
