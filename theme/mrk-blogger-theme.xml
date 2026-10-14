@@ -123,7 +123,6 @@
             <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
             <b:widget-setting name='showReadMore'>true</b:widget-setting>
             <b:widget-setting name='showPostLabels'>true</b:widget-setting>
-            <b:widget-setting name='showShareButtons'>true</b:widget-setting>
           </b:widget-settings>
           <b:includable id='main' var='top'>
             <b:if cond='data:blog.pageType == &quot;index&quot;'>
