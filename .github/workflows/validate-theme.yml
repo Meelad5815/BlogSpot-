@@ -22,23 +22,19 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
       - name: Validate XML and Blogger structure
-        id: validate
         run: python3 scripts/validate_blogger_theme.py
-
       - name: Write workflow summary
         if: always()
+        shell: bash
         run: |
-          {
-            echo "## MRK Blogger theme validation"
-            echo ""
-            echo "- Theme: `theme/mrk-blogger-theme.xml`"
-            echo "- Static checks inspect XML well-formedness, Blogger skin/sections, and widget IDs."
-            echo "- A passing result does **not** prove that Blogger's private template parser will accept the theme."
-            echo "- This workflow does **not** upload or install a theme on the live Blogger site; Blogger API v3 has no documented theme upload endpoint."
-          } >> "$GITHUB_STEP_SUMMARY"
+          cat <<'SUMMARY' >> "$GITHUB_STEP_SUMMARY"
+          ## MRK Blogger theme validation
 
+          - Static checks inspect XML well-formedness, Blogger skin/sections, and widget IDs.
+          - A passing result does **not** prove Blogger's server-side template parser will accept the theme.
+          - This workflow does **not** upload or install a theme on the live Blogger site.
+          SUMMARY
       - name: Upload theme artifact for recovery/manual installation
         if: success()
         uses: actions/upload-artifact@v4
