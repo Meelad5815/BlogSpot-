@@ -140,7 +140,10 @@
                 </article>
               </b:loop>
             </div>
-            <b:include name='nextprev'/>
+            <nav class='pagination' aria-label='Post navigation'>
+              <b:if cond='data:newerPageUrl'><a class='btn' expr:href='data:newerPageUrl'>Newer Posts</a></b:if>
+              <b:if cond='data:olderPageUrl'><a class='btn gold' expr:href='data:olderPageUrl'>Older Posts</a></b:if>
+            </nav>
           </b:includable>
         </b:widget>
       </b:section>
