@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   validate-theme:
@@ -22,8 +23,11 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
       - name: Validate XML and Blogger structure
+        id: validate
         run: python3 scripts/validate_blogger_theme.py
+
       - name: Write workflow summary
         if: always()
         shell: bash
@@ -35,6 +39,32 @@ jobs:
           - A passing result does **not** prove Blogger's server-side template parser will accept the theme.
           - This workflow does **not** upload or install a theme on the live Blogger site.
           SUMMARY
+
+      - name: Open an issue with the failure report
+        if: failure() && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          COMMIT_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          existing="$(gh issue list --state open --search '"[Theme validation failed]" in:title' --json number --jq '.[0].number // empty')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "A new validation run failed: $RUN_URL
+          
+          Commit: `$COMMIT_SHA`"
+          else
+            gh issue create               --title "[Theme validation failed] Automated check needs attention"               --label "bug"               --body "The MRK Blogger theme static validation workflow failed.
+
+          - Run: $RUN_URL
+          - Commit: `$COMMIT_SHA`
+
+          Open the run above and inspect the failed step logs. Fix the reported XML/structure issue, commit the correction, and the workflow will run again.
+
+          Note: these are static checks only. This workflow cannot install a theme on the live Blogger site or emulate Blogger's server-side template parser."
+          fi
+
       - name: Upload theme artifact for recovery/manual installation
         if: success()
         uses: actions/upload-artifact@v4
