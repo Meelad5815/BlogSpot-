@@ -1,24 +1,46 @@
-name: Validate Blogger theme XML
+name: Validate Blogger theme
 
 on:
   push:
     paths:
-      - "theme/mrk-blogger-theme.xml"
+      - "theme/**"
+      - "scripts/validate_blogger_theme.py"
       - ".github/workflows/validate-theme.yml"
   pull_request:
     paths:
-      - "theme/mrk-blogger-theme.xml"
+      - "theme/**"
+      - "scripts/validate_blogger_theme.py"
       - ".github/workflows/validate-theme.yml"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  validate-xml:
+  validate-theme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Check XML is well-formed
-        run: python -c "import xml.etree.ElementTree as ET; ET.parse('theme/mrk-blogger-theme.xml'); print('Theme XML is well-formed')"
-      - name: Upload theme file for manual Blogger installation
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate XML and Blogger structure
+        id: validate
+        run: python3 scripts/validate_blogger_theme.py
+
+      - name: Write workflow summary
+        if: always()
+        run: |
+          {
+            echo "## MRK Blogger theme validation"
+            echo ""
+            echo "- Theme: `theme/mrk-blogger-theme.xml`"
+            echo "- Static checks inspect XML well-formedness, Blogger skin/sections, and widget IDs."
+            echo "- A passing result does **not** prove that Blogger's private template parser will accept the theme."
+            echo "- This workflow does **not** upload or install a theme on the live Blogger site; Blogger API v3 has no documented theme upload endpoint."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload theme artifact for recovery/manual installation
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: mrk-blogger-theme
