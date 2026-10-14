@@ -7,71 +7,54 @@ import xml.etree.ElementTree as ET
 THEME = Path("theme/mrk-blogger-theme.xml")
 B = "{http://www.google.com/2005/gml/b}"
 
-def fail(message):
-    print(f"::error::{message}")
-    return False
-
 def main():
     if not THEME.exists():
-        fail(f"Missing theme file: {THEME}")
+        print(f"::error::Missing theme file: {THEME}")
         return 1
-
     try:
-        tree = ET.parse(THEME)
+        root = ET.parse(THEME).getroot()
     except ET.ParseError as exc:
-        fail(f"Theme XML is not well-formed: {exc}")
+        print(f"::error::Theme XML is not well-formed: {exc}")
         return 1
 
-    root = tree.getroot()
-    problems = []
-    warnings = []
-
+    problems, warnings = [], []
     if not root.tag.endswith("html"):
         problems.append("Root element should be html.")
     if root.attrib.get(B + "version") != "2":
         warnings.append("Root b:version is not '2'; confirm this is intentional.")
     if root.find(f".//{B}skin") is None:
         problems.append("Missing b:skin element.")
-    if root.find(f".//{B}section") is None:
-        problems.append("Missing b:section; Blogger needs editable widget sections.")
 
-    for element_name, label in ((f".//{B}widget", "widget"), (f".//{B}section", "section")):
+    sections = root.findall(f".//{B}section")
+    widgets = root.findall(f".//{B}widget")
+    if not sections:
+        problems.append("Missing Blogger b:section; editable widget sections are expected.")
+
+    for label, elements in (("section", sections), ("widget", widgets)):
         seen = set()
-        for element in root.findall(element_name):
-            key = "id" if label == "section" else "id"
-            value = element.attrib.get(key, "").strip()
+        for element in elements:
+            value = element.attrib.get("id", "").strip()
             if not value:
                 problems.append(f"A Blogger {label} has no id.")
             elif value in seen:
                 problems.append(f"Duplicate Blogger {label} id: {value}")
             else:
                 seen.add(value)
+            if label == "widget" and not element.attrib.get("type", "").strip():
+                problems.append(f"Widget {value or '(no id)'} has no type.")
 
-    for element in root.iter():
-        if element.tag.endswith("widget"):
-            widget_type = element.attrib.get("type", "")
-            if not widget_type:
-                problems.append(f"Widget {element.attrib.get('id', '(no id)')} has no type.")
-        if element.tag.endswith("section"):
-            if not element.attrib.get("id"):
-                problems.append("A Blogger section has no id.")
-
-    text = THEME.read_text(encoding="utf-8")
-    if "REPLACE_ME" in text or "YOUR_" in text:
+    source = THEME.read_text(encoding="utf-8")
+    if "REPLACE_ME" in source or "YOUR_" in source:
         warnings.append("Potential placeholder text found; review before installation.")
-
-    if problems:
-        for problem in problems:
-            fail(problem)
-        for warning in warnings:
-            print(f"::warning::{warning}")
-        print(f"Theme validation failed with {len(problems)} error(s).")
-        return 1
-
+    for problem in problems:
+        print(f"::error::{problem}")
     for warning in warnings:
         print(f"::warning::{warning}")
-    print("PASS: XML is well-formed; Blogger root, skin, sections, and widget IDs passed static checks.")
-    print("LIMITATION: These static checks cannot confirm Blogger will accept the template or deploy it.")
+    if problems:
+        print(f"Theme validation failed with {len(problems)} error(s).")
+        return 1
+    print("PASS: XML is well-formed; Blogger skin, sections, widget IDs and widget types passed static checks.")
+    print("LIMITATION: Static checks cannot confirm Blogger will accept or deploy the template.")
     return 0
 
 if __name__ == "__main__":
