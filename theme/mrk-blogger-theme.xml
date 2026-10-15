@@ -4,6 +4,8 @@
 <head>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <meta content='#0b1730' name='theme-color'/>
+  <meta expr:content='data:blog.metaDescription' name='description'/>
+  <meta content='MRK Digital, website development, SEO, freelancing, online services, Arduino, PLC automation' name='keywords'/>
   <b:include data='blog' name='all-head-content'/>
   <title><data:blog.pageTitle/></title>
   <b:skin><![CDATA[
@@ -23,7 +25,13 @@
     .nav { display:flex; flex-wrap:wrap; gap:7px; padding:0 0 16px; }
     .nav a { color:#fff; padding:8px 11px; border:1px solid rgba(255,255,255,.2); border-radius:7px; font-size:14px; }
     .nav a:hover { background:var(--gold); color:var(--navy); }
-    .hero { margin:26px auto; padding:clamp(22px,5vw,44px); border-radius:16px; background:linear-gradient(125deg,#fff,#eef2f8); border:1px solid #e0e6ef; }
+    .hero { margin:26px auto; padding:clamp(22px,5vw,44px); border-radius:16px; background:linear-gradient(125deg,#fff,#eef2f8); border:1px solid #e0e6ef; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(220px,.75fr); gap:24px; align-items:center; }
+    .hero-copy { min-width:0; }
+    .hero-image { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; border:1px solid #dce3ee; }
+    .service-image { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:8px; margin-bottom:13px; background:#edf1f7; }
+    .search-form { display:flex; gap:8px; margin:0 0 20px; }
+    .search-form input[type='text'] { min-width:0; flex:1; padding:10px 12px; border:1px solid #ccd5e3; border-radius:8px; font:inherit; }
+    .search-form input[type='submit'] { border:0; border-radius:8px; padding:10px 14px; background:var(--gold); color:var(--navy); font-weight:700; cursor:pointer; }
     .eyebrow { color:#946a18; text-transform:uppercase; font-size:12px; font-weight:800; letter-spacing:1.4px; }
     .hero h2 { margin:8px 0 12px; color:var(--navy); font-size:clamp(26px,4vw,40px); line-height:1.2; }
     .hero p { max-width:760px; color:var(--muted); }
@@ -47,17 +55,15 @@
     .footer-links { display:flex; flex-wrap:wrap; gap:15px; }
     .footer-links a { color:#f3d58e; }
     .copyright { font-size:13px; color:#bfc9d9; margin-top:12px; }
-    @media (max-width:800px) { .cards { grid-template-columns:repeat(2,minmax(0,1fr)); } .content-grid { grid-template-columns:1fr; } }
-    @media (max-width:520px) { .wrap { width:calc(100% - 22px); } .cards { grid-template-columns:1fr; } .nav { gap:6px; } .nav a { padding:7px 9px; font-size:13px; } .hero { margin:16px auto; } .Blog .blog-posts,.post-outer,.widget { padding:15px; } }
+    @media (max-width:800px) { .cards { grid-template-columns:repeat(2,minmax(0,1fr)); } .content-grid { grid-template-columns:1fr; } .hero { grid-template-columns:1fr; } .hero-image { max-height:320px; } }
+    @media (max-width:520px) { .wrap { width:calc(100% - 22px); } .cards { grid-template-columns:1fr; } .nav { gap:6px; } .nav a { padding:7px 9px; font-size:13px; } .hero { margin:16px auto; } .Blog .blog-posts,.post-outer,.widget { padding:15px; } .search-form input[type='submit'] { padding:9px 11px; } }
   ]]></b:skin>
 </head>
 <body>
   <div class='topbar'>Website Development • SEO Guidance • Digital Services • Automation Learning</div>
   <header class='site-header'>
     <div class='wrap brand-row'>
-      <b:section class='header' id='header' maxwidgets='1' showaddelement='no'>
-        <b:widget id='Header1' locked='true' title='MRK Digital &amp; Online Services Center' type='Header' version='2' visible='true'/>
-      </b:section>
+      <h1 class='brand'><a expr:href='data:blog.homepageUrl'><data:blog.title/></a></h1>
       <p class='tagline'>Website development, online services and practical technology guidance.</p>
     </div>
     <nav class='wrap nav' aria-label='Main navigation'>
@@ -71,23 +77,33 @@
   </header>
   <b:if cond='data:blog.url == data:blog.homepageUrl'>
     <section class='wrap hero'>
-      <div class='eyebrow'>MRK Digital &amp; Online Services Center</div>
-      <h2>Practical digital solutions for people and small businesses</h2>
-      <p>Explore website development, SEO guidance, online services information, freelancing resources, and beginner-friendly Arduino and PLC automation learning.</p>
-      <div class='actions'>
-        <a class='btn' href='https://mrkdigitalservices.blogspot.com/p/services.html'>Explore Services</a>
-        <a class='btn gold' href='https://mrkdigitalservices.blogspot.com/p/request-project-quote-mrk-digital.html'>Request a Project Quote</a>
+      <div class='hero-copy'>
+        <div class='eyebrow'>MRK Digital &amp; Online Services Center</div>
+        <h2>Practical digital solutions for people and small businesses</h2>
+        <p>Explore website development, SEO guidance, online services information, freelancing resources, and beginner-friendly Arduino and PLC automation learning.</p>
+        <div class='actions'>
+          <a class='btn' href='https://mrkdigitalservices.blogspot.com/p/services.html'>Explore Services</a>
+          <a class='btn gold' href='https://mrkdigitalservices.blogspot.com/p/request-project-quote-mrk-digital.html'>Request a Project Quote</a>
+        </div>
       </div>
+      <img class='hero-image' src='https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/mrk-digital-hero.jpg' alt='MRK Digital online services and technology' width='800' height='600' fetchpriority='high'/>
+    </section>
+    <section class='wrap'>
+      <form action='/search' class='search-form' method='get' role='search'>
+        <label for='mrk-search' style='position:absolute;left:-10000px;'>Search this blog</label>
+        <input id='mrk-search' name='q' type='text' placeholder='Search articles and tutorials' aria-label='Search articles and tutorials'/>
+        <input type='submit' value='Search'/>
+      </form>
     </section>
     <section class='wrap'>
       <h2 class='section-title'>What we can help with</h2>
       <div class='cards'>
-        <article class='service-card'><h3>Website Development</h3><p>Business websites, landing pages and practical web solutions.</p></article>
-        <article class='service-card'><h3>SEO &amp; Online Presence</h3><p>Search-friendly content structure and on-page SEO guidance.</p></article>
-        <article class='service-card'><h3>Digital Services</h3><p>Guides for common online tasks and digital platforms in Pakistan.</p></article>
-        <article class='service-card'><h3>Freelancing Resources</h3><p>Beginner-focused portfolio, profile and free-tool learning resources.</p></article>
-        <article class='service-card'><h3>Arduino &amp; PLC</h3><p>Automation learning, control concepts and project documentation.</p></article>
-        <article class='service-card'><h3>Projects &amp; Learning</h3><p>Practical work, tutorials and technology notes.</p></article>
+        <article class='service-card'><img class='service-image' src='https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/website-development.jpg' alt='Website development' width='640' height='360' loading='lazy'/><h3>Website Development</h3><p>Business websites, landing pages and practical web solutions.</p></article>
+        <article class='service-card'><img class='service-image' src='https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/seo-marketing.jpg' alt='SEO and digital marketing' width='640' height='360' loading='lazy'/><h3>SEO &amp; Online Presence</h3><p>Search-friendly content structure and on-page SEO guidance.</p></article>
+        <article class='service-card'><img class='service-image' src='https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/online-services.jpg' alt='Online services' width='640' height='360' loading='lazy'/><h3>Digital Services</h3><p>Guides for common online tasks and digital platforms in Pakistan.</p></article>
+        <article class='service-card'><img class='service-image' src='https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/freelancing.jpg' alt='Freelancing resources' width='640' height='360' loading='lazy'/><h3>Freelancing Resources</h3><p>Beginner-focused portfolio, profile and free-tool learning resources.</p></article>
+        <article class='service-card'><img class='service-image' src='https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/plc-automation.jpg' alt='PLC automation' width='640' height='360' loading='lazy'/><h3>Arduino &amp; PLC</h3><p>Automation learning, control concepts and project documentation.</p></article>
+        <article class='service-card'><img class='service-image' src='https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/arduino-electronics.jpg' alt='Arduino electronics learning' width='640' height='360' loading='lazy'/><h3>Projects &amp; Learning</h3><p>Practical work, tutorials and technology notes.</p></article>
       </div>
     </section>
   </b:if>
