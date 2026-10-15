@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <b:include data='blog' name='all-head-content'/>
+  <title><data:blog.pageTitle/></title>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <meta content='#0B1530' name='theme-color'/>
+  <!-- Blogger's built-in head include owns canonical, feed, description, and Open Graph output. -->
+  <meta content='summary_large_image' name='twitter:card'/>
+  <meta expr:content='data:blog.pageTitle' name='twitter:title'/>
+  <meta content='Practical guides and learning resources for websites, SEO, digital services, freelancing, and automation.' name='twitter:description'/>
+  <script type='application/ld+json'>
+  {"@context":"https://schema.org","@type":"WebSite","name":"MRK Digital &amp; Online Services Center","url":"https://mrkdigitalservices.blogspot.com/","description":"Practical guides and learning resources for websites, SEO, digital services, freelancing, and automation.","potentialAction":{"@type":"SearchAction","target":"https://mrkdigitalservices.blogspot.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
+  </script>
+  <b:skin><![CDATA[
+    :root {
+      --navy: #0B1530;
+      --navy-soft: #111D3A;
+      --gold: #D4AF37;
+      --paper: #F5F7FB;
+      --white: #FFFFFF;
+      --ink: #283247;
+      --muted: #5C6678;
+      --line: #E1E7F0;
+      --radius: 16px;
+      --shadow: 0 14px 36px rgba(11, 21, 48, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.7 Arial, Helvetica, sans-serif;
+    }
+    a { color: #173D70; text-decoration: none; }
+    a:hover { color: #8A6714; text-decoration: underline; }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+    img { max-width: 100%; height: auto; }
+    .wrap { width: min(1160px, calc(100% - 36px)); margin-inline: auto; }
+    .skip-link {
+      position: absolute; z-index: 20; left: 12px; top: -80px;
+      padding: 10px 14px; background: var(--white); color: var(--navy);
+      border-radius: 8px; box-shadow: var(--shadow);
+    }
+    .skip-link:focus { top: 12px; }
+    .topbar {
+      padding: 7px 16px; background: #081126; color: #E9EDF4;
+      text-align: center; font-size: 13px; letter-spacing: .02em;
+    }
+    .site-header {
+      color: var(--white);
+      background: linear-gradient(120deg, var(--navy), var(--navy-soft));
+      border-bottom: 4px solid var(--gold);
+    }
+    .masthead {
+      display: grid; grid-template-columns: minmax(230px, 1fr) minmax(220px, 340px);
+      align-items: center; gap: 22px; padding-block: 20px;
+    }
+    .header-section, .header-section .widget { min-width: 0; margin: 0; }
+    .header-section .widget-content { color: #E9EDF4; }
+    .header-section h1, .header-section h2, .header-section .title {
+      margin: 0; color: var(--white); font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.18; font-weight: 800;
+    }
+    .header-section h1 a, .header-section h2 a, .header-section .title a { color: inherit; }
+    .header-section img { max-height: 72px; width: auto; object-fit: contain; }
+    .tagline { margin: 7px 0 0; color: #DFE5EF; font-size: 14px; }
+    .search-form { display: flex; gap: 8px; width: 100%; }
+    .search-form input {
+      min-width: 0; flex: 1; border: 1px solid rgba(255,255,255,.35);
+      border-radius: 9px; padding: 10px 12px; color: var(--ink); background: var(--white);
+      font: inherit;
+    }
+    .search-form button {
+      border: 0; border-radius: 9px; padding: 10px 13px;
+      color: var(--navy); background: var(--gold); font: inherit; font-weight: 700;
+      cursor: pointer;
+    }
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .primary-nav { background: rgba(4, 12, 29, .35); }
+    .primary-nav__row { display: flex; align-items: center; min-height: 56px; gap: 14px; }
+    .menu-toggle {
+      display: none; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,.35);
+      border-radius: 8px; background: transparent; color: var(--white);
+      padding: 8px 12px; font: inherit; font-weight: 700; cursor: pointer;
+    }
+    .primary-nav__links { display: flex; align-items: center; gap: 8px; width: 100%; }
+    .primary-nav .navbar, .primary-nav .PageList { margin: 0; min-width: 0; }
+    .primary-nav .PageList .title, .primary-nav .PageList h2 { display: none; }
+    .primary-nav .PageList .widget-content, .primary-nav .PageList ul {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+      margin: 0; padding: 0; list-style: none;
+    }
+    .primary-nav .PageList li { margin: 0; padding: 0; }
+    .primary-nav .PageList a, .nav-link {
+      display: inline-block; border-radius: 8px; padding: 7px 10px;
+      color: var(--white); font-size: 14px; font-weight: 700;
+    }
+    .primary-nav .PageList a:hover, .nav-link:hover {
+      background: rgba(255,255,255,.12); color: var(--white); text-decoration: none;
+    }
+    .nav-whatsapp {
+      margin-left: auto; padding-inline: 13px !important;
+      background: var(--gold); color: var(--navy) !important;
+    }
+    .nav-whatsapp:hover { background: #E5C75D !important; color: var(--navy) !important; }
+    .hero {
+      display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+      align-items: center; gap: clamp(20px, 4vw, 48px); margin-block: 30px;
+      padding: clamp(22px, 5vw, 50px); overflow: hidden;
+      border: 1px solid var(--line); border-radius: 22px;
+      background: var(--white); box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      margin: 0 0 8px; color: #8A6714; text-transform: uppercase;
+      font-size: 12px; font-weight: 800; letter-spacing: .13em;
+    }
+    .hero h2 {
+      max-width: 700px; margin: 0; color: var(--navy);
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -.025em;
+    }
+    .hero-lead { margin: 16px 0 0; color: #37445A; font-size: clamp(17px, 2vw, 20px); }
+    .hero-note { max-width: 610px; margin: 12px 0 0; color: var(--muted); font-size: 14px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 23px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 1px solid var(--navy); border-radius: 9px; padding: 10px 16px;
+      background: var(--navy); color: var(--white); font-weight: 700;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .button:hover { transform: translateY(-1px); color: var(--white); text-decoration: none; }
+    .button--gold { border-color: var(--gold); background: var(--gold); color: var(--navy); }
+    .button--gold:hover { background: #E5C75D; color: var(--navy); }
+    .hero-art {
+      min-height: 300px; border-radius: 17px;
+      background-color: #182B50;
+      background-image: linear-gradient(100deg, rgba(11,21,48,.04), rgba(11,21,48,.12)),
+        url('https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/mrk-digital-hero.jpg');
+      background-size: cover; background-position: center;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
+    }
+    .section { margin-block: 40px; }
+    .section-heading {
+      display: flex; align-items: end; justify-content: space-between;
+      gap: 14px; margin-bottom: 17px;
+    }
+    .section-heading h2, .section-title {
+      margin: 0; color: var(--navy); font-size: clamp(23px, 3vw, 30px); line-height: 1.2;
+    }
+    .section-heading p { max-width: 640px; margin: 6px 0 0; color: var(--muted); }
+    .service-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
+    .service-card {
+      min-width: 0; overflow: hidden; border: 1px solid var(--line);
+      border-radius: 14px; background: var(--white); box-shadow: 0 7px 22px rgba(11,21,48,.045);
+    }
+    .service-art {
+      min-height: 142px; background-color: #DCE5F2;
+      background-size: cover; background-position: center;
+    }
+    .art-web { background-image: linear-gradient(180deg, rgba(11,21,48,.02), rgba(11,21,48,.24)), url('https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/website-development.jpg'); }
+    .art-wordpress { background-image: linear-gradient(180deg, rgba(11,21,48,.02), rgba(11,21,48,.24)), url('https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/website-development.jpg'); }
+    .art-marketing { background-image: linear-gradient(180deg, rgba(11,21,48,.02), rgba(11,21,48,.24)), url('https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/seo-marketing.jpg'); }
+    .art-online { background-image: linear-gradient(180deg, rgba(11,21,48,.02), rgba(11,21,48,.24)), url('https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/online-services.jpg'); }
+    .art-freelance { background-image: linear-gradient(180deg, rgba(11,21,48,.02), rgba(11,21,48,.24)), url('https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/freelancing.jpg'); }
+    .art-plc { background-image: linear-gradient(180deg, rgba(11,21,48,.02), rgba(11,21,48,.24)), url('https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/plc-automation.jpg'); }
+    .art-arduino { background-image: linear-gradient(180deg, rgba(11,21,48,.02), rgba(11,21,48,.24)), url('https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/arduino-electronics.jpg'); }
+    .art-design { background-image: linear-gradient(180deg, rgba(11,21,48,.02), rgba(11,21,48,.24)), url('https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/assets/graphic-design.jpg'); }
+    .service-card__body { padding: 16px; }
+    .service-card h3 { margin: 0 0 6px; color: var(--navy); font-size: 17px; line-height: 1.3; }
+    .service-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .feature-panel {
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 22px;
+      padding: clamp(22px, 4vw, 34px); border-radius: var(--radius);
+      border: 1px solid #D9E1EC; background: linear-gradient(120deg, #FFFFFF, #EEF2F8);
+    }
+    .feature-panel h2 { margin: 0 0 8px; color: var(--navy); font-size: 25px; }
+    .feature-panel p { margin: 0; color: var(--muted); }
+    .feature-label { display: inline-block; margin-bottom: 7px; color: #8A6714; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .about-panel {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .7fr);
+      gap: 24px; align-items: center; padding: clamp(22px, 4vw, 36px);
+      border-radius: var(--radius); background: var(--navy); color: #E8EDF5;
+    }
+    .about-panel h2 { margin: 0 0 9px; color: var(--white); font-size: 26px; }
+    .about-panel p { margin: 0; color: #D6DFEB; }
+    .about-panel__note {
+      padding: 18px; border: 1px solid rgba(255,255,255,.2);
+      border-radius: 12px; background: rgba(255,255,255,.06); font-size: 14px;
+    }
+    .content-layout {
+      display: grid; grid-template-columns: minmax(0, 2fr) minmax(230px, .85fr);
+      gap: 24px; align-items: start; margin-block: 32px 42px;
+    }
+    .main-column, .sidebar-column { min-width: 0; }
+    .latest-heading { margin: 0 0 15px; color: var(--navy); font-size: 27px; }
+    #main .widget, #main .blog-posts, #main .post-outer, #sidebar .widget {
+      overflow-wrap: anywhere; border: 1px solid var(--line);
+      border-radius: 13px; background: var(--white); box-shadow: 0 7px 22px rgba(11,21,48,.04);
+    }
+    #main .widget { margin-bottom: 17px; padding: clamp(16px, 3vw, 24px); }
+    #main .blog-posts { border: 0; background: transparent; box-shadow: none; padding: 0; }
+    #main .post-outer { margin-bottom: 16px; padding: clamp(16px, 3vw, 24px); }
+    .post-title, .post-title a, .post h3.post-title { color: var(--navy); font-size: clamp(22px, 3vw, 27px); line-height: 1.3; }
+    .post-title a:hover { color: #8A6714; }
+    .post-body { color: #303B4F; font-size: 16px; line-height: 1.8; }
+    .post-body h2, .post-body h3 { color: var(--navy); line-height: 1.3; }
+    .post-body img { max-width: 100%; height: auto; border-radius: 10px; }
+    .post-body table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
+    .post-body blockquote { margin-inline: 0; padding: 12px 18px; border-left: 4px solid var(--gold); background: #F7F4E9; }
+    .date-header, .post-footer, .post-timestamp, .post-author, .post-labels { color: var(--muted); font-size: 13px; }
+    .sidebar-column .widget { margin-bottom: 16px; padding: 18px; }
+    .sidebar-column .widget h2 { margin: 0 0 10px; color: var(--navy); font-size: 18px; }
+    .sidebar-column ul { padding-left: 20px; }
+    .sidebar-column li { margin-block: 5px; }
+    .blog-pager { display: flex; justify-content: space-between; gap: 12px; margin-block: 20px; }
+    .blog-pager a { display: inline-block; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); }
+    .breadcrumbs { margin: 18px auto 0; color: var(--muted); font-size: 13px; }
+    .breadcrumbs a { color: #173D70; }
+    .contact-strip {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 18px; margin-block: 30px; padding: 20px 22px;
+      border: 1px solid #E9D99F; border-radius: 13px; background: #FBF8ED;
+    }
+    .contact-strip h2 { margin: 0; color: var(--navy); font-size: 21px; }
+    .contact-strip p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+    .site-footer { margin-top: 38px; padding: 30px 0 18px; background: #081126; color: #E4EAF3; }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 26px; }
+    .site-footer h2, .site-footer h3 { margin: 0 0 10px; color: var(--white); font-size: 17px; }
+    .site-footer p { margin: 0; color: #C4CDDA; font-size: 14px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 9px 16px; margin: 0; padding: 0; list-style: none; }
+    .footer-links a, .site-footer a { color: #F3D98A; }
+    .site-footer .widget { margin: 0; }
+    .copyright { margin-top: 24px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.16); color: #AEB9C9; font-size: 12px; }
+    .ad-slot { min-height: 0; }
+    @media (max-width: 900px) {
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .content-layout { grid-template-columns: minmax(0, 1.6fr) minmax(210px, .8fr); gap: 17px; }
+    }
+    @media (max-width: 720px) {
+      .wrap { width: min(100% - 24px, 1160px); }
+      .masthead { grid-template-columns: 1fr; gap: 12px; padding-block: 16px; }
+      .search-form { max-width: 440px; }
+      .primary-nav__row { display: block; padding-block: 9px; }
+      .menu-toggle { display: inline-flex; }
+      .primary-nav__links { flex-direction: column; align-items: stretch; gap: 8px; padding-top: 8px; }
+      html.js .primary-nav__links { display: none; }
+      html.js .primary-nav__links.is-open { display: flex; }
+      .primary-nav .PageList .widget-content, .primary-nav .PageList ul { align-items: stretch; flex-direction: column; gap: 2px; }
+      .primary-nav .PageList li, .primary-nav .PageList a, .nav-link { display: block; width: 100%; }
+      .nav-whatsapp { margin-left: 0; text-align: center; }
+      .hero { grid-template-columns: 1fr; margin-block: 18px; }
+      .hero-art { min-height: 220px; order: -1; }
+      .content-layout { grid-template-columns: 1fr; }
+      .feature-panel { grid-template-columns: 1fr; }
+      .about-panel { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .contact-strip { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 460px) {
+      .service-grid { grid-template-columns: 1fr; }
+      .service-art { min-height: 180px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .section { margin-block: 30px; }
+      .hero { padding: 17px; border-radius: 15px; }
+      .hero-art { min-height: 180px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  ]]></b:skin>
+</head>
+<body>
+  <a class='skip-link' href='#main-content'>Skip to content</a>
+  <div class='topbar'>Digital services · website development · practical technology learning</div>
+  <header class='site-header'>
+    <div class='wrap masthead'>
+      <div>
+        <b:section class='header header-section' id='header' maxwidgets='1' showaddelement='no'>
+          <b:widget id='Header1' locked='true' title='MRK Digital &amp; Online Services Center' type='Header' version='2' visible='true'/>
+        </b:section>
+        <p class='tagline'>Digital Services, Website Development, Automation &amp; Technology Solutions</p>
+      </div>
+      <form action='https://mrkdigitalservices.blogspot.com/search' class='search-form' method='get' role='search'>
+        <label class='visually-hidden' for='site-search'>Search MRK Digital</label>
+        <input id='site-search' name='q' placeholder='Search articles and guides' type='search'/>
+        <button type='submit'>Search</button>
+      </form>
+    </div>
+    <nav aria-label='Primary navigation' class='primary-nav'>
+      <div class='wrap primary-nav__row'>
+        <button aria-controls='primary-menu' aria-expanded='false' class='menu-toggle' type='button'><span aria-hidden='true'>☰</span> Menu</button>
+        <div class='primary-nav__links' id='primary-menu'>
+          <b:section class='navbar' id='navigation' maxwidgets='1' showaddelement='yes'>
+            <b:widget id='PageList1' locked='false' title='Pages' type='PageList' version='2' visible='true'/>
+          </b:section>
+          <a class='nav-link' href='https://mrkdigitalservices.blogspot.com/#latest-posts'>Blog</a>
+          <a class='nav-link nav-whatsapp' href='https://wa.me/923270447263' rel='noopener' target='_blank'>WhatsApp</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <b:if cond='data:blog.url == data:blog.homepageUrl'>
+    <section aria-labelledby='home-title' class='wrap hero'>
+      <div class='hero-copy'>
+        <p class='eyebrow'>MRK Digital &amp; Online Services Center</p>
+        <h2 id='home-title'>MRK Digital &amp; Online Services Center</h2>
+        <p class='hero-lead'>Digital Services, Website Development, Automation &amp; Technology Solutions</p>
+        <p class='hero-note'>Explore practical guides and project-learning areas. Availability and scope for individual work are confirmed before a project begins.</p>
+        <div class='hero-actions'>
+          <a class='button' href='https://mrkdigitalservices.blogspot.com/p/services.html'>Explore Services</a>
+          <a class='button button--gold' href='https://mrkdigitalservices.blogspot.com/p/contact-mrk-digital.html'>Contact Us</a>
+        </div>
+      </div>
+      <div aria-hidden='true' class='hero-art'></div>
+    </section>
+
+    <section aria-labelledby='services-title' class='wrap section' id='services'>
+      <div class='section-heading'>
+        <div>
+          <h2 id='services-title'>Services &amp; learning areas</h2>
+          <p>Browse the topics covered by MRK Digital. Confirm project requirements and availability directly before commissioning work.</p>
+        </div>
+        <a class='button button--gold' href='https://mrkdigitalservices.blogspot.com/p/services.html'>All services</a>
+      </div>
+      <div class='service-grid'>
+        <article class='service-card'><div aria-hidden='true' class='service-art art-web'></div><div class='service-card__body'><h3>Website Development</h3><p>Responsive websites, clear page structure, and practical web guidance.</p></div></article>
+        <article class='service-card'><div aria-hidden='true' class='service-art art-wordpress'></div><div class='service-card__body'><h3>WordPress Development</h3><p>WordPress setup, maintenance, and security learning resources.</p></div></article>
+        <article class='service-card'><div aria-hidden='true' class='service-art art-marketing'></div><div class='service-card__body'><h3>SEO &amp; Digital Marketing</h3><p>Search-friendly content, on-page SEO, and digital marketing basics.</p></div></article>
+        <article class='service-card'><div aria-hidden='true' class='service-art art-online'></div><div class='service-card__body'><h3>Government &amp; Online Services</h3><p>Practical online-service guidance; verify current steps and fees with official providers.</p></div></article>
+        <article class='service-card'><div aria-hidden='true' class='service-art art-freelance'></div><div class='service-card__body'><h3>Freelancing Guidance</h3><p>Portfolio planning, digital productivity, and beginner-friendly resources.</p></div></article>
+        <article class='service-card'><div aria-hidden='true' class='service-art art-plc'></div><div class='service-card__body'><h3>PLC &amp; Industrial Automation</h3><p>Automation fundamentals, learning projects, and documentation.</p></div></article>
+        <article class='service-card'><div aria-hidden='true' class='service-art art-arduino'></div><div class='service-card__body'><h3>Arduino &amp; ESP32 Projects</h3><p>Low-voltage electronics prototypes, sensors, and project notes.</p></div></article>
+        <article class='service-card'><div aria-hidden='true' class='service-art art-design'></div><div class='service-card__body'><h3>Graphic Design &amp; Digital Solutions</h3><p>Visual communication and practical digital tools for everyday work.</p></div></article>
+      </div>
+    </section>
+
+    <section aria-labelledby='projects-title' class='wrap section'>
+      <div class='feature-panel'>
+        <div>
+          <span class='feature-label'>Featured portfolio</span>
+          <h2 id='projects-title'>Projects &amp; Learning Portfolio</h2>
+          <p>See the existing portfolio page for real project categories and learning areas across websites, SEO, freelancing, Arduino, and PLC automation. Examples are described as learning work unless a paid client project is explicitly identified.</p>
+        </div>
+        <a class='button' href='https://mrkdigitalservices.blogspot.com/p/projects-learning-portfolio-mrk-digital.html'>View portfolio</a>
+      </div>
+    </section>
+
+    <section aria-labelledby='about-title' class='wrap section'>
+      <div class='about-panel'>
+        <div>
+          <h2 id='about-title'>About MRK Digital</h2>
+          <p>MRK Digital &amp; Online Services Center shares practical guidance about website development, SEO, freelancing, digital productivity, and automation learning. The blog combines step-by-step resources with project-learning notes.</p>
+        </div>
+        <div class='about-panel__note'>For a project enquiry, describe the outcome you need and agree on scope, price, timeline, revisions, and handover before paid work begins.</div>
+        <a class='button button--gold' href='https://mrkdigitalservices.blogspot.com/p/about-mrk-digital.html'>More about MRK Digital</a>
+      </div>
+    </section>
+    <section class='wrap'><b:section class='home-extra' id='homepageextras' maxwidgets='3' showaddelement='yes'/></section>
+  </b:if>
+
+  <b:if cond='data:blog.url != data:blog.homepageUrl'>
+    <nav aria-label='Breadcrumb' class='wrap breadcrumbs'>
+      <a href='https://mrkdigitalservices.blogspot.com/'>Home</a>
+      <span aria-hidden='true'> / </span>
+      <span><data:blog.pageTitle/></span>
+    </nav>
+  </b:if>
+
+  <main class='wrap content-layout' id='main-content'>
+    <div class='main-column'>
+      <b:if cond='data:blog.url == data:blog.homepageUrl'>
+        <h2 class='latest-heading' id='latest-posts'>Latest articles &amp; guides</h2>
+      </b:if>
+      <b:section class='main' id='main' showaddelement='yes'>
+        <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'/>
+      </b:section>
+    </div>
+    <aside aria-label='More from MRK Digital' class='sidebar-column' id='sidebar'>
+      <b:section class='sidebar' id='sidebarwidgets' maxwidgets='5' showaddelement='yes'>
+        <b:widget id='PopularPosts1' title='Popular Posts' type='PopularPosts' version='2' visible='true'/>
+        <b:widget id='Label1' title='Popular Topics' type='Label' version='2' visible='true'/>
+        <b:widget id='BlogArchive1' title='Browse the Archive' type='BlogArchive' version='2' visible='true'/>
+      </b:section>
+    </aside>
+  </main>
+
+  <section aria-labelledby='contact-title' class='wrap contact-strip'>
+    <div>
+      <h2 id='contact-title'>Have a project or question?</h2>
+      <p>Use the contact page for verified contact details and project enquiry guidance.</p>
+    </div>
+    <a class='button button--gold' href='https://wa.me/923270447263' rel='noopener' target='_blank'>Chat on WhatsApp</a>
+  </section>
+
+  <footer class='site-footer'>
+    <div class='wrap footer-grid'>
+      <div>
+        <h2>MRK Digital &amp; Online Services Center</h2>
+        <p>Practical digital guides, website resources, and technology learning notes.</p>
+      </div>
+      <div>
+        <h3>Useful links</h3>
+        <ul class='footer-links'>
+          <li><a href='https://mrkdigitalservices.blogspot.com/p/services.html'>Services</a></li>
+          <li><a href='https://mrkdigitalservices.blogspot.com/p/projects-learning-portfolio-mrk-digital.html'>Projects &amp; learning</a></li>
+          <li><a href='https://mrkdigitalservices.blogspot.com/p/about-mrk-digital.html'>About</a></li>
+          <li><a href='https://mrkdigitalservices.blogspot.com/p/contact-mrk-digital.html'>Contact</a></li>
+          <li><a href='https://mrkdigitalservices.blogspot.com/p/request-project-quote-mrk-digital.html'>Project quote checklist</a></li>
+          <li><a href='https://mrkdigitalservices.blogspot.com/p/privacy-policy.html'>Privacy policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Social links</h3>
+        <p>Add verified social profiles through the Social Links section in Blogger Layout. No social URLs are pre-filled.</p>
+        <b:section class='social-links' id='sociallinks' maxwidgets='1' showaddelement='yes'/>
+      </div>
+    </div>
+    <div class='wrap'>
+      <b:section class='ad-slot' id='advertisements' maxwidgets='2' showaddelement='yes'/>
+      <div class='copyright'>© MRK Digital. Verify official procedures and fees with the relevant service provider.</div>
+    </div>
+  </footer>
+  <script type='text/javascript'><![CDATA[
+    (function () {
+      var menu = document.getElementById('primary-menu');
+      var toggle = document.querySelector('.menu-toggle');
+      if (!menu || !toggle) return;
+      document.documentElement.classList.add('js');
+      function closeMenu() {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+      toggle.addEventListener('click', function () {
+        var open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        menu.classList.toggle('is-open', !open);
+      });
+      menu.addEventListener('click', function (event) {
+        if (event.target.closest('a')) closeMenu();
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeMenu();
+          toggle.focus();
+        }
+      });
+    }());
+  ]]></script>
+</body>
+</html>
