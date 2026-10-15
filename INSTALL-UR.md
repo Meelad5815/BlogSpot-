@@ -2,30 +2,30 @@
 
 بلاگ: https://mrkdigitalservices.blogspot.com/
 
-## GitHub پر خودکار جانچ
-تھیم یا validation فائل میں تبدیلی commit ہونے پر GitHub Actions خود بخود:
-1. XML کی ساخت چیک کرتا ہے۔
-2. Blogger کے skin اور widget sections کی موجودگی چیک کرتا ہے۔
-3. widget/section IDs میں خالی یا دہرائی گئی قدریں تلاش کرتا ہے۔
-4. کامیاب جانچ پر XML فائل کا artifact تیار کرتا ہے اور Actions run میں خلاصہ لکھتا ہے۔
+## تیار XML تھیم ڈاؤن لوڈ کریں
+- **براہِ راست XML فائل:** https://raw.githubusercontent.com/Meelad5815/BlogSpot-/main/theme/mrk-blogger-theme.xml
+- GitHub پر فائل دیکھیں: https://github.com/Meelad5815/BlogSpot-/blob/main/theme/mrk-blogger-theme.xml
+- تمام تصویری اثاثے: https://github.com/Meelad5815/BlogSpot-/tree/main/assets
 
+## تھیم لگانے کا طریقہ
+1. Blogger ڈیش بورڈ کھولیں: https://www.blogger.com/
+2. **Theme** پر جائیں۔
+3. موجودہ تھیم کا **Backup/Download** ضرور بنائیں، تاکہ مسئلہ ہونے پر واپس بحال کر سکیں۔
+4. Theme کے مینو میں **Restore** یا **Upload** کا اختیار کھولیں (Blogger کے انٹرفیس میں نام بدل سکتا ہے)۔
+5. ڈاؤن لوڈ کی ہوئی `mrk-blogger-theme.xml` فائل منتخب کریں اور اپ لوڈ مکمل ہونے دیں۔
+6. ویب سائٹ کو موبائل اور کمپیوٹر دونوں پر کھول کر Home، Services، About، Contact، پوسٹس، سرچ اور تصویریں چیک کریں۔
+
+اگر آپ XML کوڈ کھول کر کاپی کرنا چاہیں تو براہِ راست XML لنک کھولیں، پورا کوڈ کاپی کر کے UTF-8 انکوڈنگ کے ساتھ `mrk-blogger-theme.xml` کے نام سے محفوظ کریں۔ بہتر طریقہ یہ ہے کہ فائل ڈاؤن لوڈ کریں، تاکہ کوڈ ادھورا کاپی نہ ہو۔
+
+## تصاویر کیسے آئیں گی؟
+تھیم میں تصاویر کے مکمل HTTPS لنکس شامل ہیں۔ تصویر کی اصل فائل XML کے اندر نہیں بلکہ GitHub کے `assets/` فولڈر میں موجود ہے؛ تھیم ان لنکس سے تصویر دکھاتا ہے۔ اس لیے XML اکیلی فائل میں لے آنا کافی ہے، بشرطیکہ GitHub repository اور asset links دستیاب رہیں۔ اگر repository یا فائلوں کے نام/مقام بدلیں تو XML میں متعلقہ لنکس بھی بدلنے ہوں گے۔ بلاگ پوسٹس کے اندر شامل تصاویر الگ سے پوسٹ کے مواد میں رہتی ہیں؛ یہ تھیم موجودہ پوسٹس کے متن یا تصاویر کو خودکار طور پر تبدیل نہیں کرتا۔
+
+## خودکار جانچ اور اس کی حد
 ورک فلو: https://github.com/Meelad5815/BlogSpot-/actions
 
-## اہم حد
-یہ جانچ Blogger کے اپنے سرور پر ہونے والی مکمل template validation نہیں ہے۔ اس سے یہ ضمانت نہیں ملتی کہ Blogger تھیم قبول کر لے گا، اور یہ workflow لائیو ویب سائٹ پر تھیم اپ لوڈ نہیں کرتا۔
-
-Blogger API v3 میں پوسٹس اور صفحات کے لیے API موجود ہے، لیکن تھیم اپ لوڈ/اپ ڈیٹ کرنے کا کوئی دستاویزی عوامی endpoint موجود نہیں۔ اس لیے GitHub Secrets میں OAuth token رکھنے سے تھیم کی خودکار اپ لوڈ خود بخود ممکن نہیں ہو جاتی۔
+GitHub Actions XML well-formedness، Blogger skin، sections، widget IDs اور widget types کی static جانچ کرتا ہے۔ یہ Blogger کے سرور پر اصل اپ لوڈ نہیں کرتا، اور static جانچ اس بات کی ضمانت نہیں کہ Blogger ہر template rule قبول کرے گا۔ Blogger API v3 میں تھیم اپ لوڈ/اپ ڈیٹ کرنے کا دستاویزی عوامی endpoint موجود نہیں؛ اس لیے لائیو انسٹالیشن Blogger کے Theme انٹرفیس سے کرنی ہوگی۔
 
 ## سکیورٹی
-- Google password، session cookie یا token کو README، عام ڈاکیومنٹ، XML فائل یا Git commit میں نہ ڈالیں۔
-- GitHub Secrets صرف اس وقت استعمال کریں جب کوئی واضح، دستیاب API action واقعی اس credential کی ضرورت رکھتا ہو۔
-- کسی نامعلوم deployment script کو Google credentials نہ دیں۔
-
-## لائیو تھیم لگانے سے پہلے
-1. Blogger میں موجودہ تھیم کا backup بنائیں۔
-2. GitHub Actions کی validation مکمل ہونے دیں۔
-3. Blogger کے Theme حصے سے منظور شدہ XML اپ لوڈ کریں۔
-4. موبائل اور کمپیوٹر پر ویب سائٹ چیک کریں اور خرابی ہو تو backup بحال کریں۔
-
-## تھیم فائل
-https://github.com/Meelad5815/BlogSpot-/blob/main/theme/mrk-blogger-theme.xml
+- Google password، session cookie یا OAuth token کو XML، README، عام فائل یا Git commit میں کبھی شامل نہ کریں۔
+- کسی غیر تصدیق شدہ script کو Google credentials نہ دیں۔
+- مسئلہ ہو تو پہلے بنایا ہوا backup بحال کریں۔
